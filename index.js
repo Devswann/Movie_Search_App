@@ -6,9 +6,12 @@ request = require('request'),
 port = 8001;
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json())
+app.use('/', express.static(__dirname + '/public'));
+app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
+app.use('/js',  express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect JS bootstrap
+app.use('/jquery',  express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jquery
 
 app.get("/", function(req, res) {
     res.render('index')

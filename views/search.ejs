@@ -1,3 +1,9 @@
-<% console.log(movieResults) %>
-<%= JSON.stringify(movieResults) %> 
+<%= console.log(movieResults.results) %> 
 
+<% movieResults.results.forEach(function(movie) { %>
+    <div>
+        <h4><%= movie.title %></h4>
+        <p>Released: <%= movie.release_date %></p>
+        <img src="https://image.tmdb.org/t/p/w500<%= movie.poster_path%>" width="10%">
+    </div>
+<% }); %>

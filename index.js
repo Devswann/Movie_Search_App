@@ -14,7 +14,18 @@ app.use('/js',  express.static(__dirname + '/node_modules/bootstrap/dist/js')); 
 app.use('/jquery',  express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jquery
 
 app.get("/", function(req, res) {
-    res.render('index')
+    var url = "https://api.themoviedb.org/3/discover/movie?api_key=d1fb1fb2731cf57c9c10a16b65184c24&language=en-US&include_adult=false&include_video=false&page=1&primary_release_year=2020";
+
+    request(url,  function(error, response, body) {
+        if (error) {
+            console.log(error);
+        } else {
+            var data = JSON.parse(body)
+            console.log(JSON.parse(body))
+            res.render('index', {movie  :  data})
+
+        }
+    })
 })
 
 app.get("/search", function(req, res){

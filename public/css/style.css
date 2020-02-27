@@ -74,3 +74,7 @@
     margin-bottom: 1.25rem;
     padding: 0 1rem;
 }
+
+.carousel-inner {
+    height: 30vw;
+}

@@ -1,10 +1,10 @@
 <%- include('partials/header.ejs') %>
 
 
-<% console.log(movie) %>
+<% console.log(movie.results) %>
 
 <div class="movie-results-container" style="
-background: url(https://image.tmdb.org/t/p/w1280/<%= movie.backdrop_path %>);
+background: url('https://image.tmdb.org/t/p/w1280/<%= movie.backdrop_path %>');
 background-repeat: no-repeat;
 background-size: cover;
 background-color: rgba(0,0,0, .5);

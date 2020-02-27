@@ -1,0 +1,76 @@
+.poster-container {
+    width: 14%;
+    margin: 3rem;
+    /* box-shadow: 0px 0px 20px; */
+}
+
+.movie-container {
+    display: flex;
+    background-size: cover;
+    min-height: 400px;
+    width: 80%;
+    margin: auto;
+}
+
+.movie-panel {
+    margin: 3rem;
+}
+
+.fa-heart {
+    color: red;
+}
+
+.favorite-button {
+    margin-left: 1vw;
+    font-size: 1.5vw;    
+    vertical-align: middle;
+}
+
+.movie-results-container {
+    background-repeat: no-repeat;
+}
+
+.results-title {
+    color: white;
+    padding-bottom: 2vw;
+}
+
+.results-info {
+    width: 95%;
+    margin: auto;
+    padding: 2vw 0;
+}
+
+.results-poster-container {
+    width: 15%;
+    margin: 2vw 0;
+    box-shadow: 0px 0px 15px white;
+}
+
+.results-overview {
+    color: white;
+    padding-top: 2vw;
+}
+
+.movie-tagline {
+    font-style: italic;
+}
+
+.more-info-btn {
+    display: inline;
+}
+
+.card-img-top {
+    padding: 0.5rem;
+}
+
+.movie-card {
+    margin: 0em;
+}
+
+.card-title {
+    text-align: center;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    padding: 0 1rem;
+}

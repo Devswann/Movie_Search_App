@@ -12,7 +12,10 @@
                     <h4 class="movie-title"><%= movie.title %></h4>
                     <p class="movie-info">Released: <%= movie.release_date %></p>
                     <p><%= movie.overview %></p>
-                    <button type="button" class="btn btn-primary">See Info</button>
+                    <form class="more-info-btn" method="GET" action="/search/<%= movie.id %>/results">
+                        <input type="text" hidden name="query" id="movieID" value="<%= movie.id %>">
+                        <button type="submit" class="btn btn-primary">See Info</button></a>
+                    </form>
                     <a class="favorite-button" href=""><i class="far fa-heart"></i></a>
                 </div>
             </div>

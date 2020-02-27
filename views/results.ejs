@@ -1,0 +1,39 @@
+<%- include('partials/header.ejs') %>
+
+
+<% console.log(movie) %>
+
+<div class="movie-results-container" style="
+background: url(https://image.tmdb.org/t/p/w1280/<%= movie.backdrop_path %>);
+background-repeat: no-repeat;
+background-size: cover;
+background-color: rgba(0,0,0, .5);
+background-blend-mode: multiply;">
+    <div class="results-info">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card-container">
+                        <div class="card movie-card" style="width: 18rem; margin: auto">
+                            <img src="https://image.tmdb.org/t/p/original<%= movie.poster_path%>" class="card-img-top" alt="...">
+                            <h5 class="card-title">
+                                <%= movie.title %>
+                            </h5>
+                            <div class="dropdown-divider"></div>
+                            <div class="card-body">
+                                <p class="movie-tagline">"<%= movie.tagline %>"</p>
+                              <p>Average Rating - <%= movie.vote_average%>/10 </p>
+                              <% movie.genres.forEach(function (genre) {  %>
+                                <span class="badge badge-pill badge-dark"><%= genre.name%></span>
+                              <% }) %>
+                            </div>
+                          </div>    
+                    </div>            
+                </div>
+                <div class="col-8">
+                    <p class="results-overview"><%= movie.overview %></p>    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

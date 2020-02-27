@@ -35,6 +35,24 @@ app.get("/search", function(req, res){
 
 })
 
+app.get("/search/:movieID/results", function (req, res) { 
+    console.log(req.query)
+    var query = req.query.query
+    var url ="https://api.themoviedb.org/3/movie/" + query + "?api_key=d1fb1fb2731cf57c9c10a16b65184c24";
+    console.log(url)
+
+    request(url,  function(error, response, body) {
+        if (error) {
+            console.log(error);
+        } else {
+            var data = JSON.parse(body)
+            res.render('results', {movie :  data})
+
+        }
+    })
+
+ })
+
 app.listen(port, function() {
     console.log('Server is now running on port ' + port);
 })

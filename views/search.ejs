@@ -1,11 +1,21 @@
 <%- include('partials/header.ejs') %>
 
-<%= console.log(movieResults.results) %> 
+<% console.log(JSON.stringify(movieResults.results)) %>
 
-<% movieResults.results.forEach(function(movie) { %>
-    <div>
-        <h4><%= movie.title %></h4>
-        <p>Released: <%= movie.release_date %></p>
-        <img src="https://image.tmdb.org/t/p/w500<%= movie.poster_path%>" width="10%">
+<div class="container-fluid">
+    <div class="row">
+        <% movieResults.results.forEach(function(movie) { %>
+            <% console.log(movie) %>
+            <div class="movie-container">
+                <img class="poster-container" src="https://image.tmdb.org/t/p/w500<%= movie.poster_path%>">
+                <div class="movie-panel">
+                    <h4 class="movie-title"><%= movie.title %></h4>
+                    <p class="movie-info">Released: <%= movie.release_date %></p>
+                    <p><%= movie.overview %></p>
+                    <button type="button" class="btn btn-primary">See Info</button>
+                    <a class="favorite-button" href=""><i class="far fa-heart"></i></a>
+                </div>
+            </div>
+        <% }); %>
     </div>
-<% }); %>
+</div>

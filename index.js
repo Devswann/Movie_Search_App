@@ -3,6 +3,8 @@ app = express(),
 mongoose = require('mongoose'),
 bodyParser = require('body-parser'),
 request = require('request'),
+fetch = require('node-fetch'),
+fetchData = require('./views/FetchMovieData'),
 port = 8001;
 
 app.set('view engine', 'ejs');
@@ -13,54 +15,25 @@ app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
 app.use('/js',  express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect JS bootstrap
 app.use('/jquery',  express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jquery
 
-app.get("/", function(req, res) {
-    var url = "https://api.themoviedb.org/3/discover/movie?api_key=d1fb1fb2731cf57c9c10a16b65184c24&language=en-US&include_adult=false&include_video=false&page=1&primary_release_year=2020";
-
-    request(url,  function(error, response, body) {
-        if (error) {
-            console.log(error);
-        } else {
-            var data = JSON.parse(body)
-            console.log(JSON.parse(body))
-            res.render('index', {movie  :  data})
-
-        }
-    })
+app.get("/", async function(req, res) {
+    let url = "https://api.themoviedb.org/3/discover/movie?api_key=d1fb1fb2731cf57c9c10a16b65184c24&language=en-US&include_adult=false&include_video=false&page=1&primary_release_year=2020";
+    let returnedData = await fetchData.FetchData(url);
+    res.render('index', {movie : returnedData});
 })
 
-app.get("/search", function(req, res){
-    var query = req.query.query;
-    console.log(query)
-    var url = "https://api.themoviedb.org/3/search/movie?api_key=d1fb1fb2731cf57c9c10a16b65184c24&query=" + query;
-    console.log(url)
-
-    request(url,  function(error, response, body) {
-        if (error) {
-            console.log(error);
-        } else {
-            var data = JSON.parse(body)
-            res.render('search', {movieResults :  data})
-
-        }
-    })
+app.get("/search", async function(req, res){
+    let query = req.query.query;
+    let url = "https://api.themoviedb.org/3/search/movie?api_key=d1fb1fb2731cf57c9c10a16b65184c24&query=" + query;
+    let returnedData = await fetchData.FetchData(url);
+    res.render('Search', {movieResults : returnedData});
 
 })
 
-app.get("/search/:movieID/results", function (req, res) { 
-    console.log(req.query)
-    var query = req.query.query
-    var url ="https://api.themoviedb.org/3/movie/" + query + "?api_key=d1fb1fb2731cf57c9c10a16b65184c24";
-    console.log(url)
-
-    request(url,  function(error, response, body) {
-        if (error) {
-            console.log(error);
-        } else {
-            var data = JSON.parse(body)
-            res.render('results', {movie :  data})
-
-        }
-    })
+app.get("/search/:movieID/results", async function(req, res) { 
+    let query = req.query.query
+    let url ="https://api.themoviedb.org/3/movie/" + query + "?api_key=d1fb1fb2731cf57c9c10a16b65184c24";
+    let returnedData = await fetchData.FetchData(url);
+    res.render('results', {movie : returnedData});
 
  })
 

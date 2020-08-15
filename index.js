@@ -12,6 +12,7 @@ app.use('/', express.static(__dirname + '/public'));
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css')); // redirect CSS bootstrap
 app.use('/js',  express.static(__dirname + '/node_modules/bootstrap/dist/js')); // redirect JS bootstrap
 app.use('/jquery',  express.static(__dirname + '/node_modules/jquery/dist')); // redirect JS jquery
+app.use('/node_modules',  express.static(__dirname + '/node_modules/')); // redirect JS jquery
 
 app.get("/", function(req, res) {
     var url = "https://api.themoviedb.org/3/discover/movie?api_key=d1fb1fb2731cf57c9c10a16b65184c24&language=en-US&include_adult=false&include_video=false&page=1&primary_release_year=2020";

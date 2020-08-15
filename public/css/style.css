@@ -78,3 +78,7 @@
 .carousel-inner {
     height: 30vw;
 }
+
+.carousel-item.active {
+    display: flex;
+}
